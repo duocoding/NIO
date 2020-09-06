@@ -1,5 +1,7 @@
 package block_noblock;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -29,13 +31,14 @@ public class BlockingNIO {
      * @param args
      */
     public static void main(String[] args) throws IOException, InterruptedException {
-        server();
-        Thread.sleep(1000);
-        client();
-        return;
+//        server();
+//        Thread.sleep(1000);
+//        client();
+//        return;
     }
 
-    public static void client() throws IOException {
+    @Test
+    public void client() throws IOException {
         //1、 获取通道
         SocketChannel channel = SocketChannel.open(new InetSocketAddress("127.0.0.1", 9898));
 
@@ -56,7 +59,8 @@ public class BlockingNIO {
         inChannle.close();
     }
 
-    public static void server() throws IOException {
+    @Test
+    public void server() throws IOException {
         //1、 获取通道
         ServerSocketChannel socketChannel = ServerSocketChannel.open();
 
